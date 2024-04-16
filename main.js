@@ -50,6 +50,18 @@ class LinkedList {
       newFirstNode.nextNode = newSecondNode;
       head = newFirstNode;
     }
+
+    this.size = function(value) {
+      let counter = 0;
+      let node = head;
+
+      while (node !== null) {
+        counter += 1;
+        node = node.nextNode;
+      }
+
+      return counter;
+    }
   }
 }
 
@@ -57,4 +69,4 @@ const list = new LinkedList();
 list.append(69);
 list.append(420);
 list.prepend('outlier');
-console.log(list.toString());
+console.log(list.toString(), list.size());
