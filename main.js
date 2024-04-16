@@ -132,6 +132,24 @@ class LinkedList {
 
     return false;
   }
+
+  find(value) {
+    if (this.#head === null) {
+      return null;
+    }
+
+    let counter = 0;
+    let node = this.#head;
+
+    while (node !== null) {
+      if (node.value === value) return counter;
+
+      counter += 1;
+      node = node.nextNode;
+    }
+
+    return null;
+  }
 }
 
 const list = new LinkedList();
@@ -155,3 +173,7 @@ console.log(list.at(3).value);
 console.log(list.contains(69));
 console.log(list.contains('bandit'));
 console.log(list.contains(1));
+
+console.log(list.find(69));
+console.log(list.find('bandit'));
+console.log(list.find(1));
