@@ -82,6 +82,28 @@ class LinkedList {
 
     return node;
   }
+
+  at(index) {
+    if (
+      this.#head === null ||
+      typeof index !== 'number' ||
+      index < 0
+    ) {
+      return this.#head;
+    }
+
+    let counter = 0;
+    let node = this.#head;
+
+    while(node.nextNode !== null) {
+      if (index === counter) break;
+
+      counter += 1;
+      node = node.nextNode;
+    }
+
+    return (counter === index) ? node : null;
+  }
 }
 
 const list = new LinkedList();
@@ -93,3 +115,4 @@ console.log(list.toString());
 console.log('Size: ' + list.size());
 console.log(list.head());
 console.log(list.tail());
+console.log(list.at(3));
