@@ -104,15 +104,38 @@ class LinkedList {
 
     return (counter === index) ? node : null;
   }
+
+  pop() {
+    if (this.#head === null) return;
+    else if (this.#head.nextNode === null) {
+      this.#head = null;
+      return;
+    }
+
+    let node = this.#head;
+
+    while (node.nextNode.nextNode !== null) {
+      node = node.nextNode;
+    }
+
+    node.nextNode = null;
+  }
 }
 
 const list = new LinkedList();
 list.append(69);
 list.append(420);
 list.append('bandit');
+
 list.prepend('outlier');
+
+list.append('removed');
+list.pop();
+
 console.log(list.toString());
 console.log('Size: ' + list.size());
+
 console.log(list.head());
 console.log(list.tail());
+
 console.log(list.at(3));
