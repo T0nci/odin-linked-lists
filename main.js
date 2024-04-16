@@ -120,6 +120,18 @@ class LinkedList {
 
     node.nextNode = null;
   }
+
+  contains(value) {
+    let node = this.#head;
+
+    while (node !== null) {
+      if (node.value === value) return true;
+
+      node = node.nextNode;
+    }
+
+    return false;
+  }
 }
 
 const list = new LinkedList();
@@ -135,7 +147,11 @@ list.pop();
 console.log(list.toString());
 console.log('Size: ' + list.size());
 
-console.log(list.head());
-console.log(list.tail());
+console.log(list.head().value);
+console.log(list.tail().value);
 
-console.log(list.at(3));
+console.log(list.at(3).value);
+
+console.log(list.contains(69));
+console.log(list.contains('bandit'));
+console.log(list.contains(1));
