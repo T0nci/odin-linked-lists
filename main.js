@@ -51,7 +51,7 @@ class LinkedList {
       head = newFirstNode;
     }
 
-    this.size = function(value) {
+    this.size = function() {
       let counter = 0;
       let node = head;
 
@@ -69,4 +69,5 @@ const list = new LinkedList();
 list.append(69);
 list.append(420);
 list.prepend('outlier');
-console.log(list.toString(), list.size());
+console.log(list.toString());
+console.log('Size: ' + list.size());
