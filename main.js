@@ -1,73 +1,76 @@
+class Node {
+  constructor(value=null) {
+    this.value = value;
+    this.nextNode = null;
+  }
+}
+
 class LinkedList {
+  #head;
+
   constructor() {
-    let head = null;
+    this.#head = null;
+  }
 
-    class Node {
-      constructor(value=null) {
-        this.value = value;
-        this.nextNode = null;
-      }
+  toString() {
+    if (this.#head === null) {
+      return 'null';
     }
 
-    this.toString = function() {
-      if (head === null) {
-        return 'null';
-      }
-
-      let node = head;
-      let string = '';
-      while (node !== null) {
-        string += `( ${node.value} ) -> `;
-        node = node.nextNode;
-      }
-
-      return string + 'null';
-    };
-
-    this.append = function(value) {
-      if (head === null) {
-        head = new Node(value);
-        return;
-      }
-
-      let node = head;
-      while(node.nextNode !== null) {
-        node = node.nextNode;
-      }
-
-      node.nextNode = new Node(value);
+    let node = this.#head;
+    let string = '';
+    while (node !== null) {
+      string += `( ${node.value} ) -> `;
+      node = node.nextNode;
     }
 
-    this.prepend = function(value) {
-      if (head === null) {
-        head = new Node(value);
-        return;
-      }
+    return string + 'null';
+  };
 
-      let newSecondNode = head;
-      let newFirstNode = new Node(value);
-
-      newFirstNode.nextNode = newSecondNode;
-      head = newFirstNode;
+  append(value) {
+    if (this.#head === null) {
+      this.#head = new Node(value);
+      return;
     }
 
-    this.size = function() {
-      let counter = 0;
-      let node = head;
-
-      while (node !== null) {
-        counter += 1;
-        node = node.nextNode;
-      }
-
-      return counter;
+    let node = this.#head;
+    while(node.nextNode !== null) {
+      node = node.nextNode;
     }
+
+    node.nextNode = new Node(value);
+  }
+
+  prepend(value) {
+    if (this.#head === null) {
+      this.#head = new Node(value);
+      return;
+    }
+
+    let newSecondNode = this.#head;
+    let newFirstNode = new Node(value);
+
+    newFirstNode.nextNode = newSecondNode;
+    this.#head = newFirstNode;
+  }
+
+  size() {
+    let counter = 0;
+    let node = this.#head;
+
+    while (node !== null) {
+      counter += 1;
+      node = node.nextNode;
+    }
+
+    return counter;
   }
 }
 
 const list = new LinkedList();
 list.append(69);
 list.append(420);
+list.append('bandit');
 list.prepend('outlier');
 console.log(list.toString());
 console.log('Size: ' + list.size());
