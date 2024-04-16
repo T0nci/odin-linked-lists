@@ -37,11 +37,24 @@ class LinkedList {
 
       node.nextNode = new Node(value);
     }
+
+    this.prepend = function(value) {
+      if (head === null) {
+        head = new Node(value);
+        return;
+      }
+
+      let newSecondNode = head;
+      let newFirstNode = new Node(value);
+
+      newFirstNode.nextNode = newSecondNode;
+      head = newFirstNode;
+    }
   }
 }
 
 const list = new LinkedList();
-list.append(3);
-list.append(2);
-list.append(1);
+list.append(69);
+list.append(420);
+list.prepend('outlier');
 console.log(list.toString());
