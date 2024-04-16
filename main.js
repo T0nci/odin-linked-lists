@@ -186,6 +186,30 @@ class LinkedList {
     
     prev.nextNode = newNode;
   }
+
+  removeAt(index) {
+    if (typeof index !== 'number' || this.#head === null) return;
+
+    if (index === 0) {
+      this.#head = this.#head.nextNode;
+      return;
+    }
+
+    let counter = 0;
+    let prev = null;
+    let curr = this.#head;
+
+    while (curr !== null) {
+      if (counter === index) {
+        prev.nextNode = curr.nextNode;
+        return; 
+      }
+
+      counter += 1;
+      prev = curr;
+      curr = curr.nextNode;
+    }
+  }
 }
 
 const list = new LinkedList();
@@ -217,4 +241,7 @@ console.log(list.find('bandit'));
 list.insertAt('pig blug', 3);
 console.log(list.at(3).value);
 console.log(list.at(4).value);
+console.log(list.toString());
+
+list.removeAt(4);
 console.log(list.toString());
