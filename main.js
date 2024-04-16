@@ -150,6 +150,42 @@ class LinkedList {
 
     return null;
   }
+
+  insertAt(value, index) {
+    if (typeof index !== 'number') {
+      return;
+    }
+
+    const newNode = new Node(value);
+
+    if (this.#head === null) {
+      this.#head = newNode;
+      return;
+    }
+    if (index === 0) {
+      newNode.nextNode = this.#head;
+      this.#head = newNode;
+      return;
+    }
+
+    let counter = 0;
+    let prev = null;
+    let curr = this.#head;
+
+    while (curr !== null) {
+      if (counter === index) {
+        newNode.nextNode = curr;
+        prev.nextNode = newNode;
+        return;
+      }
+
+      counter += 1;
+      prev = curr;
+      curr = curr.nextNode;
+    }
+    
+    prev.nextNode = newNode;
+  }
 }
 
 const list = new LinkedList();
@@ -175,5 +211,10 @@ console.log(list.contains('bandit'));
 console.log(list.contains(1));
 
 console.log(list.find(69));
-console.log(list.find('bandit'));
 console.log(list.find(1));
+console.log(list.find('bandit'));
+
+list.insertAt('pig blug', 3);
+console.log(list.at(3).value);
+console.log(list.at(4).value);
+console.log(list.toString());
