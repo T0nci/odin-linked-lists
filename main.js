@@ -213,35 +213,55 @@ class LinkedList {
 }
 
 const list = new LinkedList();
-list.append(69);
-list.append(420);
-list.append('bandit');
 
-list.prepend('outlier');
-
-list.append('removed');
+list.append(2);
+console.log(list.toString()); // 2
+list.prepend(1);
+console.log(list.toString()); // 1 2
+console.log(list.size()); // 2
+console.log(list.head()); // 1
+console.log(list.tail()); // 2
+console.log(list.at(0)); // 1
+list.append(3);
 list.pop();
+console.log(list.toString()); // 1 2
+console.log(list.contains(3)); // false
+console.log(list.find(1)); // 0
+list.insertAt(3, 1);
+console.log(list.toString()); // 1 3 2
+list.removeAt(1);
+console.log(list.toString()); // 1 2
 
-console.log(list.toString());
-console.log('Size: ' + list.size());
+// Tests
+// list.append(69);
+// list.append(420);
+// list.append('bandit');
 
-console.log(list.head().value);
-console.log(list.tail().value);
+// list.prepend('outlier');
 
-console.log(list.at(3).value);
+// list.append('removed');
+// list.pop();
 
-console.log(list.contains(69));
-console.log(list.contains('bandit'));
-console.log(list.contains(1));
+// console.log(list.toString());
+// console.log('Size: ' + list.size());
 
-console.log(list.find(69));
-console.log(list.find(1));
-console.log(list.find('bandit'));
+// console.log(list.head().value);
+// console.log(list.tail().value);
 
-list.insertAt('pig blug', 3);
-console.log(list.at(3).value);
-console.log(list.at(4).value);
-console.log(list.toString());
+// console.log(list.at(3).value);
 
-list.removeAt(4);
-console.log(list.toString());
+// console.log(list.contains(69));
+// console.log(list.contains('bandit'));
+// console.log(list.contains(1));
+
+// console.log(list.find(69));
+// console.log(list.find(1));
+// console.log(list.find('bandit'));
+
+// list.insertAt('pig blug', 3);
+// console.log(list.at(3).value);
+// console.log(list.at(4).value);
+// console.log(list.toString());
+
+// list.removeAt(4);
+// console.log(list.toString());
